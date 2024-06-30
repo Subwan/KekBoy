@@ -3,18 +3,22 @@ import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
 import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
+import parser from "@typescript-eslint/parser";
+import { version } from "os";
 
 
 export default [
   {
-    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+    files: ["**/*.{js,ts,jsx,tsx}"],
+    // ignores: [".eslint.config.mjs"],
   },
   {
     languageOptions: {
       parserOptions: {
         ecmaFeatures: { jsx: true },
         ecmaVersion: 12,
-        project: "./tsconfig.json"
+        parser: parser,
+        project: "./tsconfig.eslint.json"
       }
     }
   },
@@ -23,11 +27,11 @@ export default [
   ...tseslint.configs.recommended,
   pluginReactConfig,
   {
-    plugins: {
-      // "@typescript-eslint": tseslint,
-      "simple-import-sort": simpleImportSort,
-      // "react": react,
-      // "hooks": hooks,
+    plugins: { "simple-import-sort": simpleImportSort },
+    settings: {
+      react: {
+        version: "detect"
+      }
     },
     rules: {
       "prefer-const": "error",
@@ -80,6 +84,7 @@ export default [
         }
       ],
       "react/no-unused-prop-types": [1],
+      "react/react-in-jsx-scope": 0,
       "padding-line-between-statements": [
         "error",
         { "blankLine": "always", "prev": "*", "next": "return" },
@@ -113,7 +118,7 @@ export default [
       "no-console": ["warn", { "allow": ["warn", "error"] }],
       "curly": 2,
       "quotes": ["error", "single", { "avoidEscape": true }],
-      "default-case": 1
+      'default-case': 1
     }
   }
 ];
