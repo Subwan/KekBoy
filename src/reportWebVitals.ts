@@ -12,4 +12,5 @@ const reportWebVitals = (onPerfEntry?: ReportHandler) => {
   }
 };
 
+// eslint-disable-next-line no-restricted-syntax
 export default reportWebVitals;
