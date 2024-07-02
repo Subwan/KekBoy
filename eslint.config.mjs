@@ -4,13 +4,11 @@ import tseslint from "typescript-eslint";
 import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import parser from "@typescript-eslint/parser";
-import { version } from "os";
 
 
 export default [
   {
     files: ["**/*.{js,ts,jsx,tsx}"],
-    // ignores: [".eslint.config.mjs"],
   },
   {
     languageOptions: {
@@ -26,6 +24,9 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReactConfig,
+  {
+    ignores: ["eslint.config.mjs", "craco.config.js"],
+  },
   {
     plugins: { "simple-import-sort": simpleImportSort },
     settings: {
