@@ -25,7 +25,7 @@ export default [
   ...tseslint.configs.recommended,
   pluginReactConfig,
   {
-    ignores: ["eslint.config.mjs", "craco.config.js"],
+    ignores: ["eslint.config.mjs", "craco.config.js", "src/setupProxy.js"],
   },
   {
     plugins: { "simple-import-sort": simpleImportSort },

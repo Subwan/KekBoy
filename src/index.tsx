@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ConfigProvider, ruRU } from '@ui';
 
+import './utils/dayjsConfig';
+
 import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 
