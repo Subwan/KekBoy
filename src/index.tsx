@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { ConfigProvider, ruRU } from '@ui';
 
-import App from './App';
+import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 
-import './index.css';
+import './index.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <React.StrictMode>
-    <App />
+    <ConfigProvider locale={ruRU}>
+      <App />
+    </ConfigProvider>
   </React.StrictMode>,
 );
 
