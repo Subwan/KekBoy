@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 
 import { checkIsSame, getObjectTime } from './utils';
 
-import { START_TIME } from './constants';
+import { START_TIME, TIMER_END } from './constants';
 
 import { Timer } from './types';
 
@@ -16,6 +16,12 @@ export const useWindowWidth = (): number => {
     };
 
     window.addEventListener('resize', onResize);
+    window.addEventListener('orientationchange', onResize)
+
+    return () => {
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('orientationchange', onResize);
+    };
   }, []);
 
   return windowWidth;
@@ -39,9 +45,7 @@ export const useCountdown = (): Timer => {
   };
 
   useEffect(() => {
-    let timer: NodeJS.Timer;
-
-    getTime()
+    const changeTime = (): Promise<boolean | undefined> => getTime()
       .then((data) => {
         if (!data?.dateTime) {
           return;
@@ -53,26 +57,38 @@ export const useCountdown = (): Timer => {
           return;
         }
 
-        timer = setInterval(() => {
-          const current = dayjs();
-          const start = dayjs(START_TIME);
-    
-          const diff = start.diff(current);
-    
-          const objectTimer = getObjectTime(diff);
+        const current = dayjs(data.dateTime);
+        const start = dayjs(START_TIME);
+  
+        const diff = start.diff(current);
+  
+        const objectTimer = getObjectTime(diff);
 
-          if (objectTimer.days === 0 && objectTimer.hours === 0 && objectTimer.minutes === 0) {
-            setTime(undefined);
+        if (objectTimer.days === 0 && objectTimer.hours === 0 && objectTimer.minutes === 0) {
+          setTime(TIMER_END);
 
-            clearInterval(timer);
+          return true;
+        }
 
+        setTime(objectTimer);
+
+        return false;
+      });
+
+    changeTime();
+
+    const timer = setInterval(() => {
+      changeTime()
+        .then((expire) => {
+          if (!expire) {
             return;
           }
 
-          setTime(objectTimer);
-        }, 1000);
-      });
-    
+          clearInterval(timer);
+        });
+  
+      }, 60000);
+
     return () => clearInterval(timer);
   }, []);
 

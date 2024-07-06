@@ -1,3 +1,5 @@
 import { getObjectTime } from './utils';
 
-export type Timer = ReturnType<typeof getObjectTime> | undefined;
+import { TIMER_END } from './constants';
+
+export type Timer = ReturnType<typeof getObjectTime> | undefined | typeof TIMER_END;
