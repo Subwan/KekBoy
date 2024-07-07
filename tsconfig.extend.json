@@ -2,8 +2,11 @@
   "compilerOptions":{
      "baseUrl":"./src",
      "paths":{
-        "@ui":[
+        "@ui": [
            "./ui/index.ts"
+        ],
+        "@assets": [
+            "./assets"
         ]
      }
   }
