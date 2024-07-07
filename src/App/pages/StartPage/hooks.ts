@@ -32,7 +32,7 @@ export const useCountdown = (): Timer => {
 
   const getTime = async () => {
     try {
-      const apiTime = await fetch('/api/Time/current/zone?timeZone=Europe/Moscow');
+      const apiTime = await fetch('/timeapi/api/Time/current/zone?timeZone=Europe/Moscow');
 
       if (!apiTime?.ok) {
         throw new Error(apiTime.toString())
