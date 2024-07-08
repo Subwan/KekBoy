@@ -1,0 +1,14 @@
+@use 'sass:meta';
+@use 'colors';
+
+@function capitalize($value) {
+  @return to-upper-case(str-slice($value, 1, 1)) + str-slice($value, 2);
+}
+
+$colors: meta.module-variables("colors");
+
+:export {
+  @each $key, $value in $colors {
+    color#{capitalize(unquote($key))}: $value;
+  }
+}
