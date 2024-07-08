@@ -1,13 +1,15 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 
 import { EmptyScreen } from '../../components/EmptyScreen';
-import { TIMER_END } from './constants';
+import { TEST_ID, TIMER_END } from './constants';
 import { useCountdown, useWindowWidth } from './hooks';
 
 import styles from './styles.module.scss';
 
 export const StartPage: React.FC = () => {
+  const { testId } = useParams();
+
   const windowWidth = useWindowWidth();
   const timer = useCountdown();
 
@@ -15,7 +17,9 @@ export const StartPage: React.FC = () => {
     return <div className={styles.middleBlock}>Rotate screen</div>;
   }
 
-  if (timer === TIMER_END) {
+  const isTest = Number(testId) === TEST_ID;
+
+  if (timer === TIMER_END || isTest) {
     return <Outlet />
   }
 
