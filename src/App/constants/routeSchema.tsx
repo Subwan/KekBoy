@@ -1,8 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-// EmptyScreen временно тут
-import { EmptyScreen } from '../components/EmptyScreen';
-import { StartPage } from '../pages';
+import { StartPage, StatusPage } from '../pages';
 import { ROUTES } from './routes';
 
 export const ROUTER = createBrowserRouter([
@@ -11,7 +9,8 @@ export const ROUTER = createBrowserRouter([
     children: [
       {
         path: ROUTES.MAIN,
-        element: <EmptyScreen />,
+        // Временно начальная страница, возможно её вообще не будет
+        element: <StatusPage />,
       },
       {
         path: ROUTES.QUESTIONNAIRE,
