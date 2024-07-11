@@ -4,5 +4,6 @@
   "endOfLine": "lf",
   "tabWidth": 2,
   "arrowParents": "always",
+  "jsxSingleQuote": false,
   "printWidth": 90
 }
