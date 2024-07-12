@@ -1,4 +1,4 @@
 export const ROUTES = {
-  MAIN: '/:testId?',
+  MAIN: '/:testId?/:menuId?',
   QUESTIONNAIRE: '/:testId?/questionnaire',
 };

@@ -5,6 +5,8 @@ import ruRU from 'antd/es/locale/ru_RU';
 
 import { MENU_CONFIG } from './componentsConfig';
 
+import cssVars from './styles.module.scss';
+
 export type { ConfigProviderProps };
 
 export { enUS, ruRU };
@@ -15,6 +17,12 @@ export const ConfigProvider = ({
 }: ConfigProviderProps) => {
   const theme: ConfigProviderProps['theme'] = {
     hashed: false,
+    token: {
+      colorTextBase: cssVars.colorOrange2,
+      colorLink: cssVars.colorMainOrange,
+      colorPrimary: cssVars.colorMainOrange,
+      colorBgBase: 'transparent',
+    },
     components: {
       Menu: MENU_CONFIG,
     },

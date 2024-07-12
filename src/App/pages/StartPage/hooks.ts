@@ -64,7 +64,7 @@ export const useCountdown = (): Timer => {
   
         const objectTimer = getObjectTime(diff);
 
-        if (objectTimer.days === 0 && objectTimer.hours === 0 && objectTimer.minutes === 0) {
+        if (objectTimer.days <= 0 && objectTimer.hours <= 0 && objectTimer.minutes <= 0) {
           setTime(TIMER_END);
 
           return true;

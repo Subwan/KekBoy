@@ -1,0 +1,20 @@
+@use '@assets/variables' as *;
+
+$headerHeight: 20px;
+$verticalMargin: 10px;
+$navigationHeight: 46px;
+
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.mainBlock {
+  margin: 0 $sidesMargin;
+  height: calc(100vh - $headerHeight - 2 * $verticalMargin - $navigationHeight);
+  overflow-y: auto;
+}
+
+.navigationContainer {
+  height: $navigationHeight;
+}
