@@ -1,0 +1,12 @@
+@use '@assets/colors' as *;
+@use '@assets/variables' as *;
+@use '../../styles.module.scss' as *;
+
+.header {
+  margin: $verticalMargin $sidesMargin 0 $sidesMargin;
+  height: $headerHeight;
+  border-top: 1px solid $menu;
+  border-left: 1px solid $menu;
+  border-right: 1px solid $menu;
+  z-index: 3; // чтобы был над анимацией
+}

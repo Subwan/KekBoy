@@ -13,23 +13,31 @@ export const StartPage: React.FC = () => {
   const windowWidth = useWindowWidth();
   const timer = useCountdown();
 
-  if (windowWidth < 500) {
-    return <div className={styles.middleBlock}>Rotate screen</div>;
-  }
+  const renderMainScreen = () => {
+    if (windowWidth < 500) {
+      return <div className={styles.middleBlock}>Rotate screen</div>;
+    }
 
-  const isTest = Number(testId) === TEST_ID;
+    const isTest = Number(testId) === TEST_ID;
 
-  if (timer === TIMER_END || isTest) {
-    return <Outlet />
-  }
+    if (timer === TIMER_END || isTest) {
+      return <Outlet />
+    }
 
-  if (timer) {
-    return (
-      <div className={styles.middleBlock}>
-        Осталось: {timer.days}д. {timer.hours}:{timer.minutes}
-      </div>
-    );  
-  }
+    if (timer) {
+      return (
+        <div className={styles.middleBlock}>
+          Осталось: {timer.days} д. {timer.hours} ч. {timer.minutes} мин.
+        </div>
+      );  
+    }
 
-  return <EmptyScreen />;
+    return <EmptyScreen />;
+  };
+
+  return (
+    <div className={styles.screen}>
+      {renderMainScreen()}
+    </div>
+  );
 };

@@ -34,8 +34,10 @@ function useStyle() {
       justify-content: center;
       position: relative;
       gap: 20%;
-      margin: 0 20px;
+      margin: 0 ${cssVars.varSidesMargin};
       border: none;
+      background: transparent;
+      z-index: 3;
 
       &:before {
         content: none;
@@ -48,18 +50,17 @@ function useStyle() {
         left: 0;
         width: 100%;
         height: 50%;
-        border-bottom: 1px solid ${cssVars.colorBlack};
-        border-left: 1px solid ${cssVars.colorBlack};
-        border-right: 1px solid ${cssVars.colorBlack};
-        z-index: 1;
+        border-bottom: 1px solid ${cssVars.colorMenu};
+        border-left: 1px solid ${cssVars.colorMenu};
+        border-right: 1px solid ${cssVars.colorMenu};
+        z-index: 3; // чтобы быть выше анимаций
       }
 
 
       .${prefix}-item {
-        background-color: ${cssVars.colorWhite};
-        z-index: 2;
+        z-index: 4;
         box-sizing: border-box;
-        border: 1px solid white; // Без этого прыгает элемент при выборе из-за относительного расположения
+        border: 1px solid transparent; // Без этого прыгает элемент при выборе из-за относительного расположения
 
         &:after {
           content: none !important;
@@ -67,9 +68,8 @@ function useStyle() {
       }
 
       .${prefix}-item-selected, .${prefix}-item-active {
-        border: 1px solid ${cssVars.colorBlack};
-        background-color: ${cssVars.colorWhite} !important;
-        z-index: 2;
+        border: 1px solid ${cssVars.colorMenu};
+        z-index: 4;
       }
     `,
   }))();

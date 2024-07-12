@@ -1,3 +1,70 @@
+@use '@assets/colors' as *;
+
+.screen {
+  animation: colorPulse 5s infinite ease-in-out;
+  background-image: radial-gradient($background4, $background1);
+  box-shadow:0 0 5vmin 1vmin $black inset;
+
+  &:before {
+    content: "";
+    animation: wave 10s infinite ease-in-out;
+    height: 20vh;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+  }
+
+  &:after {
+    content:"";
+    background-image: linear-gradient(transparent, transparent 3px, $background2);
+    background-size: 4px 4px;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+  }
+}
+
+@keyframes colorPulse {
+  0%, 100% {
+    color:$mainOrange;
+  }
+  48%, 52% {
+    color:$orange2;
+  }
+  50% {
+    color: $orange3;
+  }
+}
+
+@keyframes wave {
+  0% {
+    box-shadow: 0 -10vh 20vh $mainOrange;
+    top: -100vh;
+  }
+  48%, 52% {
+    box-shadow: 0 -10vh 20vh $orange2;
+  }
+  50% {
+    box-shadow: 0 -10vh 20vh $orange3;
+  }
+  100% {
+    box-shadow: 0 -10vh 20vh $mainOrange;
+    top: 200vh;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity:0;
+  }
+}
+
 .middleBlock {
   width: 100vw;
   height: 100vh;

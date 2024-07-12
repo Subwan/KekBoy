@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { StartPage, StatusPage } from '../pages';
+import { MenuPage, StartPage } from '../pages';
 import { ROUTES } from './routes';
 
 export const ROUTER = createBrowserRouter([
@@ -9,10 +9,10 @@ export const ROUTER = createBrowserRouter([
     children: [
       {
         path: ROUTES.MAIN,
-        // Временно начальная страница, возможно её вообще не будет
-        element: <StatusPage />,
+        element: <MenuPage />,
       },
       {
+        // Думаю он не нужен, надо разруливать переход на анкету внутри StartPage
         path: ROUTES.QUESTIONNAIRE,
         element: 'questionnaire',
       },
