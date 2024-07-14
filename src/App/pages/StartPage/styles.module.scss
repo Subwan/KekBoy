@@ -3,21 +3,21 @@
 .screen {
   animation: colorPulse 5s infinite ease-in-out;
   background-image: radial-gradient($background4, $background1);
-  box-shadow:0 0 5vmin 1vmin $black inset;
+  box-shadow: 0 0 5vmin 1vmin $black inset;
 
   &:before {
-    content: "";
+    content: '';
     animation: wave 10s infinite ease-in-out;
     height: 20vh;
     left: 0;
-    opacity: .5;
+    opacity: 0.5;
     position: absolute;
     right: 0;
     z-index: 1;
   }
 
   &:after {
-    content:"";
+    content: '';
     background-image: linear-gradient(transparent, transparent 3px, $background2);
     background-size: 4px 4px;
     bottom: 0;
@@ -31,11 +31,13 @@
 }
 
 @keyframes colorPulse {
-  0%, 100% {
-    color:$mainOrange;
+  0%,
+  100% {
+    color: $mainOrange;
   }
-  48%, 52% {
-    color:$orange2;
+  48%,
+  52% {
+    color: $orange2;
   }
   50% {
     color: $orange3;
@@ -47,7 +49,8 @@
     box-shadow: 0 -10vh 20vh $mainOrange;
     top: -100vh;
   }
-  48%, 52% {
+  48%,
+  52% {
     box-shadow: 0 -10vh 20vh $orange2;
   }
   50% {
@@ -61,7 +64,7 @@
 
 @keyframes blink {
   50% {
-    opacity:0;
+    opacity: 0;
   }
 }
 

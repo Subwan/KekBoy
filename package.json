@@ -28,13 +28,13 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "lint": "eslint src/**",
+    "lint": "eslint src/** --max-warnings=0 --no-warn-ignored",
     "prepare": "husky"
   },
   "lint-staged": {
-    "src/**.{js,jsx,!(d).ts,tsx,json}": [
-      "eslint src/** --max-warnings=0 --no-warn-ignored",
-      "prettier --write"
+    "src/**/*.{js,jsx,!(d).ts,tsx,json}": [
+      "eslint src --max-warnings=0",
+      "prettier src --write"
     ]
   },
   "eslintConfig": {

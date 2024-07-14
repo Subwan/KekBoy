@@ -56,7 +56,6 @@ function useStyle() {
         z-index: 3; // чтобы быть выше анимаций
       }
 
-
       .${prefix}-item {
         z-index: 4;
         box-sizing: border-box;

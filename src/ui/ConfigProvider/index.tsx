@@ -11,10 +11,7 @@ export type { ConfigProviderProps };
 
 export { enUS, ruRU };
 
-export const ConfigProvider = ({
-  children,
-  ...restProps
-}: ConfigProviderProps) => {
+export const ConfigProvider = ({ children, ...restProps }: ConfigProviderProps) => {
   const theme: ConfigProviderProps['theme'] = {
     hashed: false,
     token: {

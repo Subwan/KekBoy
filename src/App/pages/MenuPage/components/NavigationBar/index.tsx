@@ -25,8 +25,15 @@ export const NavigationBar: React.FC = () => {
   const onClick: MenuProps['onClick'] = (info) => {
     const currentTestId = testId ? { testId } : {};
 
-    navigate(generatePath(ROUTES.MAIN, { ...currentTestId, menuId: info.key}))
+    navigate(generatePath(ROUTES.MAIN, { ...currentTestId, menuId: info.key }));
   };
 
-  return <Menu items={items} mode="horizontal" selectedKeys={[menuId || MenuItem.Stats]} onClick={onClick} />;
+  return (
+    <Menu
+      items={items}
+      mode="horizontal"
+      selectedKeys={[menuId || MenuItem.Stats]}
+      onClick={onClick}
+    />
+  );
 };

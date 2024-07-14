@@ -6,7 +6,7 @@
   @return to-upper-case(str-slice($value, 1, 1)) + str-slice($value, 2);
 }
 
-$colors: meta.module-variables("colors");
+$colors: meta.module-variables('colors');
 $vars: meta.module-variables('variables');
 
 :export {
