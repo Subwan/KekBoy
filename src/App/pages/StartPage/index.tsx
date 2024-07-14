@@ -21,7 +21,7 @@ export const StartPage: React.FC = () => {
     const isTest = Number(testId) === TEST_ID;
 
     if (timer === TIMER_END || isTest) {
-      return <Outlet />
+      return <Outlet />;
     }
 
     if (timer) {
@@ -29,15 +29,11 @@ export const StartPage: React.FC = () => {
         <div className={styles.middleBlock}>
           Осталось: {timer.days} д. {timer.hours} ч. {timer.minutes} мин.
         </div>
-      );  
+      );
     }
 
     return <EmptyScreen />;
   };
 
-  return (
-    <div className={styles.screen}>
-      {renderMainScreen()}
-    </div>
-  );
+  return <div className={styles.screen}>{renderMainScreen()}</div>;
 };

@@ -24,9 +24,7 @@ export const MenuPage: React.FC = () => {
   return (
     <div className={styles.container}>
       <Header />
-      <div className={styles.mainBlock}>
-        {renderMenu()}
-      </div>
+      <div className={styles.mainBlock}>{renderMenu()}</div>
       <div className={styles.navigationContainer}>
         <NavigationBar />
       </div>

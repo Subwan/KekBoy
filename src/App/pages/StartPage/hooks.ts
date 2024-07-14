@@ -9,14 +9,14 @@ import { Timer } from './types';
 
 export const useWindowWidth = (): number => {
   const [windowWidth, setWindowWidth] = useState<number>(window.screen.width);
-  
+
   useLayoutEffect(() => {
     const onResize = () => {
       setWindowWidth(window.screen.width);
     };
 
     window.addEventListener('resize', onResize);
-    window.addEventListener('orientationchange', onResize)
+    window.addEventListener('orientationchange', onResize);
 
     return () => {
       window.removeEventListener('resize', onResize);
@@ -32,10 +32,12 @@ export const useCountdown = (): Timer => {
 
   const getTime = async () => {
     try {
-      const apiTime = await fetch('/timeapi/api/Time/current/zone?timeZone=Europe/Moscow');
+      const apiTime = await fetch(
+        '/timeapi/api/Time/current/zone?timeZone=Europe/Moscow',
+      );
 
       if (!apiTime?.ok) {
-        throw new Error(apiTime.toString())
+        throw new Error(apiTime.toString());
       }
 
       return apiTime.json() as Promise<{ dateTime: string }>;
@@ -45,8 +47,8 @@ export const useCountdown = (): Timer => {
   };
 
   useEffect(() => {
-    const changeTime = (): Promise<boolean | undefined> => getTime()
-      .then((data) => {
+    const changeTime = (): Promise<boolean | undefined> =>
+      getTime().then((data) => {
         if (!data?.dateTime) {
           return;
         }
@@ -59,9 +61,9 @@ export const useCountdown = (): Timer => {
 
         const current = dayjs(data.dateTime);
         const start = dayjs(START_TIME);
-  
+
         const diff = start.diff(current);
-  
+
         const objectTimer = getObjectTime(diff);
 
         if (objectTimer.days <= 0 && objectTimer.hours <= 0 && objectTimer.minutes <= 0) {
@@ -78,16 +80,14 @@ export const useCountdown = (): Timer => {
     changeTime();
 
     const timer = setInterval(() => {
-      changeTime()
-        .then((expire) => {
-          if (!expire) {
-            return;
-          }
+      changeTime().then((expire) => {
+        if (!expire) {
+          return;
+        }
 
-          clearInterval(timer);
-        });
-  
-      }, 60000);
+        clearInterval(timer);
+      });
+    }, 60000);
 
     return () => clearInterval(timer);
   }, []);
