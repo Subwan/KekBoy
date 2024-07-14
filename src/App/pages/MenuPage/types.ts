@@ -1,4 +1,4 @@
 export enum MenuItem {
-  Stats = 'stats',
+  Profile = 'profile',
   Map = 'map',
 }
