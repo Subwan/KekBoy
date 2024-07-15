@@ -5,17 +5,18 @@ import { EmptyScreen } from '../../components/EmptyScreen';
 import { TEST_ID, TIMER_END } from './constants';
 import { useCountdown, useOrientation } from './hooks';
 import { Outlet } from './Outlet';
+import { TimerScreen } from './TimerScreen';
 
 import styles from './styles.module.scss';
 
 export const StartPage: React.FC = () => {
   const { testId } = useParams();
 
-  const angle = useOrientation();
+  const isWrongOrientation = useOrientation();
   const timer = useCountdown();
 
   const renderMainScreen = () => {
-    if (angle !== 90) {
+    if (isWrongOrientation) {
       return <div className={styles.middleBlock}>Rotate screen</div>;
     }
 
@@ -26,11 +27,7 @@ export const StartPage: React.FC = () => {
     }
 
     if (timer) {
-      return (
-        <div className={styles.middleBlock}>
-          Осталось: {timer.days} д. {timer.hours} ч. {timer.minutes} мин.
-        </div>
-      );
+      return <TimerScreen {...timer} />;
     }
 
     return (

@@ -7,8 +7,8 @@ export const Profile: React.FC = () => {
   const result = QuestionnaireApi.getResult();
 
   if (!result) {
-    return <EmptyScreen />
+    return <EmptyScreen />;
   }
- 
-  return <div>{result}</div>
+
+  return <div>{result}</div>;
 };

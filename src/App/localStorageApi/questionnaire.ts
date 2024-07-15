@@ -30,10 +30,7 @@ export const QuestionnaireApi = {
   add: (data: QuestionnaireAnswer) => {
     const currentData = QuestionnaireApi.get();
 
-    const newData: QuestionnaireResult = [
-      ...currentData,
-      data,
-    ];
+    const newData: QuestionnaireResult = [...currentData, data];
 
     return localStorage.setItem(KEY, JSON.stringify(newData));
   },
@@ -57,24 +54,27 @@ export const QuestionnaireApi = {
 
     let maxAnswered: QuestionnaireAnswer = 1;
 
-    currentData.reduce((acc: Record<QuestionnaireAnswer, number>, curr) => {
-      const newValue = {
-        ...acc,
-        [curr]: acc[curr] + 1,
-      };
+    currentData.reduce(
+      (acc: Record<QuestionnaireAnswer, number>, curr) => {
+        const newValue = {
+          ...acc,
+          [curr]: acc[curr] + 1,
+        };
 
-      if (newValue[curr] > newValue[maxAnswered]) {
-        maxAnswered = curr;
-      }
+        if (newValue[curr] > newValue[maxAnswered]) {
+          maxAnswered = curr;
+        }
 
-      return newValue;
-    }, {
-      1: 0,
-      2: 0,
-      3: 0,
-      4: 0,
-    });
+        return newValue;
+      },
+      {
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+      },
+    );
 
-    return localStorage.setItem(RESULT_KEY, JSON.stringify(maxAnswered));;
+    return localStorage.setItem(RESULT_KEY, JSON.stringify(maxAnswered));
   },
 };

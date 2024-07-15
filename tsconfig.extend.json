@@ -5,6 +5,9 @@
         "@ui": [
            "./ui/index.ts"
         ],
+        "@ui-icons": [
+           "./ui/icons/index.ts"
+        ],
         "@assets": [
             "./assets"
         ]

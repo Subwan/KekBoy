@@ -47,14 +47,12 @@ export const QuestionBlock: React.FC<Props> = ({ currentQuestionId, onContinue }
   return (
     <div className={styles.container}>
       <h2>{currentQuestion.question}</h2>
-      <div className={styles.answersBlock}>
-        {answers}
-      </div>
+      <div className={styles.answersBlock}>{answers}</div>
       <div className={styles.buttonContainer}>
         <Button
-          type='primary'
+          type="primary"
           ghost
-          size='large'
+          size="large"
           disabled={!selectedAnswer}
           onClick={onClick}
         >
