@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  height: 100%;
+  text-align: center;
+
+  h2 {
+    margin: 0;
+  }
+}

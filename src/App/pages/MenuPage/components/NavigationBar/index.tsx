@@ -14,7 +14,7 @@ export const NavigationBar: React.FC = () => {
   const items: MenuProps['items'] = [
     {
       label: 'Status',
-      key: MenuItem.Stats,
+      key: MenuItem.Profile,
     },
     {
       label: 'Map',
@@ -32,7 +32,7 @@ export const NavigationBar: React.FC = () => {
     <Menu
       items={items}
       mode="horizontal"
-      selectedKeys={[menuId || MenuItem.Stats]}
+      selectedKeys={[menuId || MenuItem.Profile]}
       onClick={onClick}
     />
   );

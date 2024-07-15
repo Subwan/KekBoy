@@ -1,12 +1,14 @@
-import React from 'react';
-import { ConfigProvider, Menu as AntdMenu, MenuItemProps, MenuProps } from 'antd';
+import React, { PropsWithChildren, useContext} from 'react';
+import { Menu as AntdMenu, MenuItemProps, MenuProps } from 'antd';
 import { createStyles } from 'antd-style';
+
+import { ConfigProvider } from '../ConfigProvider';
 
 import cssVars from './styles.module.scss';
 
 export type { MenuProps, MenuItemProps };
 
-export const Menu = (props: MenuProps) => {
+export const Menu: React.FC<MenuProps> = (props) => {
   return (
     <BaseProvider>
       <AntdMenu {...props} />
@@ -14,8 +16,8 @@ export const Menu = (props: MenuProps) => {
   );
 };
 
-function BaseProvider(props: React.PropsWithChildren) {
-  const { menu } = React.useContext(ConfigProvider.ConfigContext);
+function BaseProvider(props: PropsWithChildren) {
+  const { menu } = useContext(ConfigProvider.ConfigContext);
   const { styles, cx } = useStyle();
 
   return (
@@ -26,7 +28,7 @@ function BaseProvider(props: React.PropsWithChildren) {
 }
 
 function useStyle() {
-  const { getPrefixCls } = React.useContext(ConfigProvider.ConfigContext);
+  const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const prefix = getPrefixCls('menu');
 
   return createStyles(({ css }) => ({

@@ -11,11 +11,6 @@ export const ROUTER = createBrowserRouter([
         path: ROUTES.MAIN,
         element: <MenuPage />,
       },
-      {
-        // Думаю он не нужен, надо разруливать переход на анкету внутри StartPage
-        path: ROUTES.QUESTIONNAIRE,
-        element: 'questionnaire',
-      },
     ],
   },
 ]);

@@ -3,7 +3,7 @@ import { ConfigProviderProps } from 'antd/es/config-provider';
 import enUS from 'antd/es/locale/en_US';
 import ruRU from 'antd/es/locale/ru_RU';
 
-import { MENU_CONFIG } from './componentsConfig';
+import { BUTTON_CONFIG, MENU_CONFIG } from './componentsConfig';
 
 import cssVars from './styles.module.scss';
 
@@ -15,13 +15,15 @@ export const ConfigProvider = ({ children, ...restProps }: ConfigProviderProps) 
   const theme: ConfigProviderProps['theme'] = {
     hashed: false,
     token: {
-      colorTextBase: cssVars.colorOrange2,
+      colorTextBase: cssVars.colorMainOrange,
       colorLink: cssVars.colorMainOrange,
       colorPrimary: cssVars.colorMainOrange,
       colorBgBase: 'transparent',
+      borderRadius: 0,
     },
     components: {
       Menu: MENU_CONFIG,
+      Button: BUTTON_CONFIG,
     },
   };
 
@@ -31,3 +33,5 @@ export const ConfigProvider = ({ children, ...restProps }: ConfigProviderProps) 
     </AntdConfigProvider>
   );
 };
+
+ConfigProvider.ConfigContext = AntdConfigProvider.ConfigContext;
