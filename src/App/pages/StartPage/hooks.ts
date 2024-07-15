@@ -7,24 +7,22 @@ import { START_TIME, TIMER_END } from './constants';
 
 import { Timer } from './types';
 
-export const useWindowWidth = (): number => {
-  const [windowWidth, setWindowWidth] = useState<number>(window.screen.width);
+export const useOrientation = (): number => {
+  const [orientationAngle, setOrientationAngle] = useState<number>(window.screen.orientation.angle);
 
   useLayoutEffect(() => {
-    const onResize = () => {
-      setWindowWidth(window.screen.width);
+    const onRotate = () => {
+      setOrientationAngle(window.screen.orientation.angle);
     };
 
-    window.addEventListener('resize', onResize);
-    window.addEventListener('orientationchange', onResize);
+    window.screen.orientation.addEventListener('change', onRotate);
 
     return () => {
-      window.removeEventListener('resize', onResize);
-      window.removeEventListener('orientationchange', onResize);
+      window.screen.orientation.removeEventListener('change', onRotate);
     };
   }, []);
 
-  return windowWidth;
+  return orientationAngle;
 };
 
 export const useCountdown = (): Timer => {
