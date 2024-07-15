@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useContext} from 'react';
+import React, { PropsWithChildren, useContext } from 'react';
 import { Menu as AntdMenu, MenuItemProps, MenuProps } from 'antd';
 import { createStyles } from 'antd-style';
 

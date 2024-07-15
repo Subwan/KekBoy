@@ -7,8 +7,14 @@ import { START_TIME, TIMER_END } from './constants';
 
 import { Timer } from './types';
 
-export const useOrientation = (): number => {
-  const [orientationAngle, setOrientationAngle] = useState<number>(window.screen.orientation.angle);
+export const useOrientation = (): boolean => {
+  const [orientationAngle, setOrientationAngle] = useState<number>(
+    window.screen.orientation.angle,
+  );
+
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent,
+  );
 
   useLayoutEffect(() => {
     const onRotate = () => {
@@ -22,7 +28,7 @@ export const useOrientation = (): number => {
     };
   }, []);
 
-  return orientationAngle;
+  return isMobile && orientationAngle !== 90;
 };
 
 export const useCountdown = (): Timer => {
