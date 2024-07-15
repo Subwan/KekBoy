@@ -63,7 +63,7 @@ export const QuestionnaireApi = {
         [curr]: acc[curr] + 1,
       };
 
-      if (newValue[curr] > maxAnswered) {
+      if (newValue[curr] > newValue[maxAnswered]) {
         maxAnswered = curr;
       }
 

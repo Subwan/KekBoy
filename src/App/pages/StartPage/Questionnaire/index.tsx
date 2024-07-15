@@ -26,14 +26,15 @@ export const Questionnaire: React.FC<Props> = ({ setEnd }) => {
   const onStart = () => setCurrentQuestionId(0);
 
   const onContinue: TOnContinue = (answer) => {
+    QuestionnaireApi.add(answer);
+
     if (currentQuestionId === QUESTIONS_LENGTH - 1) {
       QuestionnaireApi.calculateResult();
 
       return setEnd();
     }
 
-    setCurrentQuestionId((value) => value !== undefined ? value + 1 : 0);
-    QuestionnaireApi.add(answer);
+    setCurrentQuestionId((value) => (value !== undefined ? value + 1 : 0));
   };
 
   if (currentQuestionId === undefined) {
