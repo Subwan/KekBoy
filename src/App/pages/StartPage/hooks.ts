@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
 import dayjs from 'dayjs';
 
-import { checkIsSame, getObjectTime } from './utils';
+import { getObjectTime } from './utils';
 
 import { START_TIME, TIMER_END } from './constants';
 
@@ -54,12 +54,6 @@ export const useCountdown = (): Timer => {
     const changeTime = (): Promise<boolean | undefined> =>
       getTime().then((data) => {
         if (!data?.dateTime) {
-          return;
-        }
-
-        const isSame = checkIsSame(data.dateTime);
-
-        if (!isSame) {
           return;
         }
 
