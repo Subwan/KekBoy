@@ -13,11 +13,11 @@ export const NavigationBar: React.FC = () => {
 
   const items: MenuProps['items'] = [
     {
-      label: 'Status',
+      label: 'Профиль',
       key: MenuItem.Profile,
     },
     {
-      label: 'Map',
+      label: 'Карта',
       key: MenuItem.Map,
     },
   ];
