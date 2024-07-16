@@ -30,11 +30,7 @@ export const StartPage: React.FC = () => {
       return <TimerScreen {...timer} />;
     }
 
-    return (
-      <div className={styles.middleBlock}>
-        <EmptyScreen />
-      </div>
-    );
+    return <EmptyScreen />;
   };
 
   return <div className={styles.screen}>{renderMainScreen()}</div>;

@@ -1,14 +1,22 @@
 import React from 'react';
 
+import { getProfile } from './utils';
+
 import { EmptyScreen } from '../../../../components/EmptyScreen';
-import { QuestionnaireApi } from '../../../../localStorageApi';
+
+import styles from './styles.module.scss';
 
 export const Profile: React.FC = () => {
-  const result = QuestionnaireApi.getResult();
+  const result = getProfile();
 
   if (!result) {
     return <EmptyScreen />;
   }
 
-  return <div>{result}</div>;
+  return (
+    <div className={styles.middleBlock}>
+      <h2>{result.title}</h2>
+      <p>{result.text}</p>
+    </div>
+  );
 };
