@@ -1,5 +1,3 @@
-import dayjs from 'dayjs';
-
 import { QuestionnaireApi } from '../../localStorageApi';
 
 export function getObjectTime(milliseconds: number) {
@@ -20,14 +18,6 @@ export function getObjectTime(milliseconds: number) {
     minutes,
   };
 }
-
-export const checkIsSame = (serverTime: string) => {
-  const currentDate = dayjs();
-  const serverDate = dayjs(serverTime);
-  const isSame = currentDate.isSame(serverDate, 'minute');
-
-  return isSame;
-};
 
 export const checkQuestionnaireEnd = () => {
   return !!QuestionnaireApi.getResult();
