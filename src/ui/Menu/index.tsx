@@ -4,7 +4,7 @@ import { createStyles } from 'antd-style';
 
 import { ConfigProvider } from '../ConfigProvider';
 
-import cssVars from './styles.module.scss';
+import cssVars from '@assets/variables.module.scss';
 
 export type { MenuProps, MenuItemProps };
 

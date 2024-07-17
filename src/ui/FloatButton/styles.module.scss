@@ -1,6 +1,8 @@
 @use '@assets/colors' as *;
 
 .floatButton {
+  background-color: transparent;
+
   div[class~='ant-float-btn-body'] {
     background-color: $darker;
   }

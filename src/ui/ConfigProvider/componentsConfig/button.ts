@@ -1,6 +1,6 @@
 import { OverrideToken } from 'antd/lib/theme/interface';
 
-import cssVars from '../styles.module.scss';
+import cssVars from '@assets/variables.module.scss';
 
 export const BUTTON_CONFIG: OverrideToken['Button'] = {
   ghostBg: cssVars.colorDarker,

@@ -5,7 +5,7 @@ import ruRU from 'antd/es/locale/ru_RU';
 
 import { BUTTON_CONFIG, MENU_CONFIG } from './componentsConfig';
 
-import cssVars from './styles.module.scss';
+import cssVars from '@assets/variables.module.scss';
 
 export type { ConfigProviderProps };
 
