@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import backgroundMusic from '@assets/audio/timer_background.m4a';
 import { FloatButton } from '@ui';
 import { CaretRightFilled, PauseOutlined } from '@ui-icons';
@@ -13,17 +13,12 @@ export interface BottomTimerProps {
   minutes: number;
 }
 
+const audio = new Audio(backgroundMusic);
+
+audio.loop = true;
+
 export const TimerScreen: React.FC<BottomTimerProps> = ({ days, hours, minutes }) => {
   const [play, setPlay] = useState<boolean>(false);
-  const [audio, setAudio] = useState<HTMLAudioElement>(new Audio(backgroundMusic));
-
-  useEffect(() => {
-    const newAudio = new Audio(backgroundMusic);
-
-    newAudio.loop = true;
-
-    setAudio(newAudio);
-  }, []);
 
   audio.onplay = () => setPlay(true);
   audio.onpause = () => setPlay(false);
