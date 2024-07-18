@@ -1,8 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import { EmptyScreen } from '../../components/EmptyScreen';
-import { Header, NavigationBar, Profile } from './components';
+import { Header, NavigationBar, Profile, Quests } from './components';
 
 import { MenuItem } from './types';
 
@@ -13,8 +12,8 @@ export const MenuPage: React.FC = () => {
 
   const renderMenu = () => {
     switch (menuId) {
-      case MenuItem.Map:
-        return <EmptyScreen />;
+      case MenuItem.Quests:
+        return <Quests />;
       case MenuItem.Profile:
       default:
         return <Profile />;

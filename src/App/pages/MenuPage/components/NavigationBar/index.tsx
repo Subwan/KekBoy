@@ -17,8 +17,8 @@ export const NavigationBar: React.FC = () => {
       key: MenuItem.Profile,
     },
     {
-      label: 'Карта',
-      key: MenuItem.Map,
+      label: 'Задания',
+      key: MenuItem.Quests,
     },
   ];
 

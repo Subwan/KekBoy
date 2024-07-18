@@ -3,7 +3,7 @@
   "singleQuote": true,
   "endOfLine": "lf",
   "tabWidth": 2,
-  "arrowParents": "always",
+  "arrowParens": "always",
   "jsxSingleQuote": false,
   "printWidth": 90
 }

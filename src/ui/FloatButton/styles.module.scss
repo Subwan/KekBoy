@@ -2,6 +2,7 @@
 
 .floatButton {
   background-color: transparent;
+  -webkit-tap-highlight-color: transparent;
 
   div[class~='ant-float-btn-body'] {
     background-color: $darker;
