@@ -1,4 +1,5 @@
 @use '@assets/colors' as *;
+@use '@assets/mixins' as *;
 
 $paddingTop: 24px;
 $blockPaddingTop: 16px;
@@ -7,30 +8,36 @@ $activeWidth: 12px;
 $activeMargin: 6px;
 
 .container {
-  height: calc(100% - $paddingTop);
+  height: calc(100% - $paddingTop * 2);
   display: flex;
   justify-content: space-between;
-  padding-top: $paddingTop;
+  padding: $paddingTop 0;
   overflow: hidden;
 
   .quests {
+    @include scrollbarStyle;
+
     width: 40%;
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow-y: auto;
+    direction: rtl;
 
     li {
+      direction: ltr;
       position: relative;
       font-size: 20px;
       line-height: 24px;
       font-weight: 400;
+      text-align: left;
       padding: $blockPaddingTop 12px $blockPaddingTop
         calc($activeMargin * 2 + $activeWidth);
       margin-bottom: 8px;
       box-sizing: border-box;
       border: 1px solid transparent;
       cursor: pointer;
+      user-select: none;
       -webkit-tap-highlight-color: transparent;
 
       &:last-child {
@@ -54,10 +61,26 @@ $activeMargin: 6px;
 
   .completed {
     color: rgba($mainOrange, 30%);
+    pointer-events: none;
   }
 
   .description {
+    @include scrollbarStyle;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
     width: 55%;
+    height: 100%;
     padding-top: $blockPaddingTop;
+    overflow-y: auto;
+
+    p {
+      width: 100%;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 400;
+      margin: 0;
+    }
   }
 }
