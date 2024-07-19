@@ -1,0 +1,17 @@
+@use '@assets/colors' as *;
+
+@mixin scrollbarStyle {
+  &::-webkit-scrollbar {
+    width: 4px;
+    z-index: 2;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $mainOrange;
+    border-radius: 10px;
+  }
+}

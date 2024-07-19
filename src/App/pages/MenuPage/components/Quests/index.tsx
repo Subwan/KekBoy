@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
+import { Button } from '@ui';
 
 import { QUESTS } from './constants';
 
@@ -7,12 +8,10 @@ import { TQuest } from '../../../../types';
 
 import styles from './styles.module.scss';
 
-const sortedQuest = QUESTS.toSorted((item) => (item.completed ? 0 : -1));
-
 export const Quests: React.FC = () => {
-  const [currentQuest, setCurrentQuest] = useState<TQuest>(sortedQuest[0]);
+  const [currentQuest, setCurrentQuest] = useState<TQuest>(QUESTS[0]);
 
-  const questsBlock = sortedQuest.map(
+  const questsBlock = QUESTS.map(
     (item) =>
       item.active && (
         <li
@@ -20,7 +19,7 @@ export const Quests: React.FC = () => {
             [styles.current]: currentQuest.title === item.title,
             [styles.completed]: item.completed,
           })}
-          key={item.title}
+          key={item.code}
           onClick={() => setCurrentQuest(item)}
         >
           {item.title}
@@ -34,7 +33,10 @@ export const Quests: React.FC = () => {
       <div
         className={cn(styles.description, { [styles.completed]: currentQuest.completed })}
       >
-        {currentQuest.description}
+        <p>{currentQuest.description}</p>
+        <Button type="primary" ghost size="large">
+          Продолжить
+        </Button>
       </div>
     </div>
   );
