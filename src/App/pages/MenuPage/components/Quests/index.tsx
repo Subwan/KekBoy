@@ -1,30 +1,56 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import cn from 'classnames';
-import { Button } from '@ui';
 
-import { QUESTS } from './constants';
+import { QuestApi } from '../../../../localStorageApi';
+import { CodeBlock } from './CodeBlock';
 
-import { TQuest } from '../../../../types';
+import { QUEST_ORDER } from '../../../../constants/quests';
+
+import { QuestsCodes, TQuest, TQuests } from '../../../../types';
+import { TUpdateQuests } from './types';
 
 import styles from './styles.module.scss';
 
 export const Quests: React.FC = () => {
-  const [currentQuest, setCurrentQuest] = useState<TQuest>(QUESTS[0]);
+  const [quests, setQuests] = useState<TQuests>(QuestApi.get());
+  const [currentQuest, setCurrentQuest] = useState<TQuest>(quests[QuestsCodes.FILTER]);
 
-  const questsBlock = QUESTS.map(
-    (item) =>
-      item.active && (
+  const updateQuests: TUpdateQuests = useCallback((value, code) => {
+    setQuests(value);
+
+    const nextCode = QUEST_ORDER[code];
+
+    if (nextCode) {
+      setCurrentQuest(value[nextCode]);
+    }
+  }, []);
+
+  const questsBlock = Object.entries(quests).reduce<JSX.Element[]>(
+    (acc, [code, item]) => {
+      const newItem = !!item.active && (
         <li
           className={cn({
             [styles.current]: currentQuest.title === item.title,
             [styles.completed]: item.completed,
           })}
-          key={item.code}
+          key={code}
           onClick={() => setCurrentQuest(item)}
         >
           {item.title}
         </li>
-      ),
+      );
+
+      if (!newItem) {
+        return acc;
+      }
+
+      if (item.completed) {
+        return [...acc, newItem];
+      }
+
+      return [newItem, ...acc];
+    },
+    [],
   );
 
   return (
@@ -34,9 +60,7 @@ export const Quests: React.FC = () => {
         className={cn(styles.description, { [styles.completed]: currentQuest.completed })}
       >
         <p>{currentQuest.description}</p>
-        <Button type="primary" ghost size="large">
-          Продолжить
-        </Button>
+        <CodeBlock updateQuests={updateQuests} />
       </div>
     </div>
   );

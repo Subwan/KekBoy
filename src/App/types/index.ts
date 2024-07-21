@@ -17,7 +17,8 @@ export enum QuestsCodes {
 export type TQuest = {
   active: boolean;
   completed: boolean;
-  code: QuestsCodes;
   title: string;
   description: string;
 };
+
+export type TQuests = Record<QuestsCodes, TQuest>;
