@@ -1,0 +1,13 @@
+@use '@assets/mixins' as *;
+
+.container {
+  @include selectableList;
+
+  .controls {
+    display: inline-flex;
+    align-items: inherit;
+    gap: 24px;
+    font-size: 32px;
+    -webkit-tap-highlight-color: transparent;
+  }
+}

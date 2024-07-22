@@ -20,6 +20,10 @@ export const NavigationBar: React.FC = () => {
       label: 'Задания',
       key: MenuItem.Quests,
     },
+    {
+      label: 'Радио',
+      key: MenuItem.Radio,
+    },
   ];
 
   const onClick: MenuProps['onClick'] = (info) => {

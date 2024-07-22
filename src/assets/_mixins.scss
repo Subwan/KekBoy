@@ -15,3 +15,61 @@
     border-radius: 10px;
   }
 }
+
+$paddingTop: 24px !default;
+$blockPaddingTop: 16px !default;
+$activeWidth: 12px !default;
+$activeMargin: 6px !default;
+
+@mixin selectableList {
+  height: calc(100% - $paddingTop * 2);
+  display: flex;
+  justify-content: space-between;
+  padding: $paddingTop 0;
+  overflow: hidden;
+
+  .list {
+    @include scrollbarStyle;
+
+    width: 40%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    direction: rtl;
+
+    li {
+      direction: ltr;
+      position: relative;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 400;
+      text-align: left;
+      padding: $blockPaddingTop 12px $blockPaddingTop
+        calc($activeMargin * 2 + $activeWidth);
+      margin-bottom: 8px;
+      box-sizing: border-box;
+      border: 1px solid transparent;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+    .current {
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: $activeMargin;
+        transform: translateY(-50%);
+        width: $activeWidth;
+        aspect-ratio: 1 / 1;
+        background-color: $mainOrange;
+      }
+    }
+  }
+}

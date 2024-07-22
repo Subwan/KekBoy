@@ -5,6 +5,7 @@ import { ConfigProvider, ruRU } from '@ui';
 import './utils/dayjsConfig';
 
 import { App } from './App';
+import { RadioProvider } from './RadioProvider';
 import reportWebVitals from './reportWebVitals';
 
 import './index.scss';
@@ -14,7 +15,9 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <ConfigProvider locale={ruRU}>
-      <App />
+      <RadioProvider>
+        <App />
+      </RadioProvider>
     </ConfigProvider>
   </React.StrictMode>,
 );

@@ -55,7 +55,7 @@ export const Quests: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <ul className={styles.quests}>{questsBlock}</ul>
+      <ul className={styles.list}>{questsBlock}</ul>
       <div
         className={cn(styles.description, { [styles.completed]: currentQuest.completed })}
       >
