@@ -69,9 +69,9 @@ $activeMargin: 6px;
 
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-between;
     width: 55%;
     height: 100%;
+    gap: 24px;
     padding-top: $blockPaddingTop;
     overflow-y: auto;
 
@@ -82,5 +82,21 @@ $activeMargin: 6px;
       font-weight: 400;
       margin: 0;
     }
+  }
+}
+
+.codeInputBlock {
+  display: flex;
+  gap: 24px;
+
+  .codeInput {
+    border: 1px solid $mainOrange;
+    padding: 0 12px;
+    color: inherit;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
   }
 }
