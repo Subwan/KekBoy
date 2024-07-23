@@ -32,7 +32,6 @@ export const Radio: React.FC = () => {
       onClick={() => setPlayback(track.playback)}
     >
       {track.name}
-      {track.playback}
     </li>
   ));
 
