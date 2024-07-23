@@ -22,3 +22,9 @@ export type TQuest = {
 };
 
 export type TQuests = Record<QuestsCodes, TQuest>;
+
+export enum PlaybackType {
+  PREV = 'prev',
+  NEXT = 'next',
+  CURRENT = 'current',
+}

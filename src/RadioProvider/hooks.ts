@@ -6,6 +6,8 @@ import { RadioApi } from '../App/localStorageApi';
 
 import { FIRST_TRACK_PLAYBACK } from '../App/constants/tracklist';
 
+import { PlaybackType } from '../App/types';
+
 export const usePlayback = ({
   isPlaying,
   audio,
@@ -17,7 +19,7 @@ export const usePlayback = ({
     useState<number>(FIRST_TRACK_PLAYBACK);
 
   const updateActiveTrackPlayback = useCallback(() => {
-    setActiveTrackPlayback(getNearPlayback('current'));
+    setActiveTrackPlayback(getNearPlayback(PlaybackType.CURRENT));
   }, []);
 
   useEffect(() => {
@@ -31,7 +33,7 @@ export const usePlayback = ({
       interval = setInterval(() => {
         RadioApi.set(audio.currentTime);
 
-        setActiveTrackPlayback(getNearPlayback('current'));
+        setActiveTrackPlayback(getNearPlayback(PlaybackType.CURRENT));
       }, 1000);
     }
 

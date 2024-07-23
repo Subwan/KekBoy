@@ -8,6 +8,8 @@ import { usePlayback } from './hooks';
 
 import { FIRST_TRACK_PLAYBACK } from '../App/constants/tracklist';
 
+import { PlaybackType } from '../App/types';
+
 export const RadioContext = React.createContext<{
   isPlaying: boolean;
   activeTrackPlayback: number;
@@ -71,13 +73,13 @@ export const RadioProvider: React.FC<React.PropsWithChildren> = ({ children }) =
     audio.pause();
   }, []);
   const prev = useCallback(() => {
-    audio.currentTime = getNearPlayback('prev');
+    audio.currentTime = getNearPlayback(PlaybackType.PREV);
     RadioApi.set(audio.currentTime);
     play();
     updateActiveTrackPlayback();
   }, []);
   const next = useCallback(() => {
-    audio.currentTime = getNearPlayback('next');
+    audio.currentTime = getNearPlayback(PlaybackType.NEXT);
     RadioApi.set(audio.currentTime);
     play();
     updateActiveTrackPlayback();

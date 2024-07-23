@@ -2,14 +2,16 @@ import { RadioApi } from '../App/localStorageApi';
 
 import { FIRST_TRACK_PLAYBACK, TRACKLIST } from '../App/constants/tracklist';
 
-export const getNearPlayback = (type: 'prev' | 'next' | 'current'): number => {
+import { PlaybackType } from '../App/types';
+
+export const getNearPlayback = (type: PlaybackType): number => {
   const playback = RadioApi.get();
 
   if (!playback) {
     return FIRST_TRACK_PLAYBACK;
   }
 
-  if (type === 'next') {
+  if (type === PlaybackType.NEXT) {
     return (
       TRACKLIST.find((track) => track.playback > playback)?.playback ??
       FIRST_TRACK_PLAYBACK
@@ -28,7 +30,7 @@ export const getNearPlayback = (type: 'prev' | 'next' | 'current'): number => {
     return FIRST_TRACK_PLAYBACK;
   }
 
-  if (type === 'current') {
+  if (type === PlaybackType.CURRENT) {
     return TRACKLIST[currentTrackIndex]?.playback ?? FIRST_TRACK_PLAYBACK;
   }
 
