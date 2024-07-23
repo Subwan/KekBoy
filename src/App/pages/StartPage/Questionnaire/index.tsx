@@ -1,5 +1,6 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useContext, useLayoutEffect, useState } from 'react';
 
+import { RadioContext } from '../../../../RadioProvider';
 import { QuestionnaireApi } from '../../../localStorageApi';
 import { QuestionBlock, StartBlock } from './components';
 import { QUESTIONS_LENGTH } from './constants';
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export const Questionnaire: React.FC<Props> = ({ setEnd }) => {
+  const { play } = useContext(RadioContext);
   const [currentQuestionId, setCurrentQuestionId] = useState<number | undefined>();
 
   useLayoutEffect(() => {
@@ -23,9 +25,14 @@ export const Questionnaire: React.FC<Props> = ({ setEnd }) => {
     setCurrentQuestionId(currentResult.length);
   }, []);
 
-  const onStart = () => setCurrentQuestionId(0);
+  const onStart = () => {
+    play();
+    setCurrentQuestionId(0);
+  };
 
   const onContinue: TOnContinue = (answer) => {
+    play();
+
     QuestionnaireApi.add(answer);
 
     if (currentQuestionId === QUESTIONS_LENGTH - 1) {
