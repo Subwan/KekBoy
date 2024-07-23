@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { getNearPlayback } from './utils';
 
@@ -16,6 +16,14 @@ export const usePlayback = ({
   const [activeTrackPlayback, setActiveTrackPlayback] =
     useState<number>(FIRST_TRACK_PLAYBACK);
 
+  const updateActiveTrackPlayback = useCallback(() => {
+    setActiveTrackPlayback(getNearPlayback('current'));
+  }, []);
+
+  useEffect(() => {
+    updateActiveTrackPlayback();
+  }, []);
+
   useEffect(() => {
     let interval: NodeJS.Timeout;
 
@@ -23,7 +31,7 @@ export const usePlayback = ({
       interval = setInterval(() => {
         RadioApi.set(audio.currentTime);
 
-        setActiveTrackPlayback(getNearPlayback());
+        setActiveTrackPlayback(getNearPlayback('current'));
       }, 1000);
     }
 
@@ -32,5 +40,5 @@ export const usePlayback = ({
     };
   }, [isPlaying]);
 
-  return activeTrackPlayback;
+  return { activeTrackPlayback, updateActiveTrackPlayback };
 };

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import cn from 'classnames';
 import {
   CaretRightFilled,
@@ -14,8 +14,14 @@ import { TRACKLIST } from '../../../../constants/tracklist';
 import styles from './styles.module.scss';
 
 export const Radio: React.FC = () => {
-  const { isPlaying, play, pause, prev, next, activeTrackPlayback } =
+  const { isPlaying, play, pause, prev, next, activeTrackPlayback, setPlayback } =
     useContext(RadioContext);
+
+  useEffect(() => {
+    document
+      .querySelector(`.${styles.current}`)
+      ?.scrollIntoView({ block: 'center', inline: 'center' });
+  }, [activeTrackPlayback]);
 
   const renderList = TRACKLIST.map((track) => (
     <li
@@ -23,6 +29,7 @@ export const Radio: React.FC = () => {
         [styles.current]: activeTrackPlayback === track.playback,
       })}
       key={track.playback}
+      onClick={() => setPlayback(track.playback)}
     >
       {track.name}
       {track.playback}
@@ -31,7 +38,6 @@ export const Radio: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {activeTrackPlayback}
       <ul className={styles.list}>{renderList}</ul>
       <div className={styles.controls}>
         <StepBackwardOutlined onClick={prev} />

@@ -15,6 +15,7 @@ export const RadioContext = React.createContext<{
   pause: () => void;
   prev: () => void;
   next: () => void;
+  setPlayback: (playback: number) => void;
 }>({
   isPlaying: false,
   activeTrackPlayback: FIRST_TRACK_PLAYBACK,
@@ -22,6 +23,7 @@ export const RadioContext = React.createContext<{
   pause: () => {},
   prev: () => {},
   next: () => {},
+  setPlayback: (playback: number) => playback,
 });
 
 const audio = new Audio(radioMix);
@@ -31,7 +33,7 @@ audio.loop = true;
 export const RadioProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
-  const activeTrackPlayback = usePlayback({
+  const { activeTrackPlayback, updateActiveTrackPlayback } = usePlayback({
     isPlaying,
     audio,
   });
@@ -69,14 +71,22 @@ export const RadioProvider: React.FC<React.PropsWithChildren> = ({ children }) =
     audio.pause();
   }, []);
   const prev = useCallback(() => {
-    audio.currentTime = getNearPlayback(false);
+    audio.currentTime = getNearPlayback('prev');
     RadioApi.set(audio.currentTime);
     play();
+    updateActiveTrackPlayback();
   }, []);
   const next = useCallback(() => {
-    audio.currentTime = getNearPlayback(true);
+    audio.currentTime = getNearPlayback('next');
     RadioApi.set(audio.currentTime);
     play();
+    updateActiveTrackPlayback();
+  }, []);
+  const setPlayback = useCallback((playback: number) => {
+    audio.currentTime = playback;
+    RadioApi.set(audio.currentTime);
+    play();
+    updateActiveTrackPlayback();
   }, []);
 
   return (
@@ -88,6 +98,7 @@ export const RadioProvider: React.FC<React.PropsWithChildren> = ({ children }) =
         pause,
         prev,
         next,
+        setPlayback,
       }}
     >
       {children}

@@ -17,6 +17,6 @@ export const RadioApi = {
     return parsed;
   },
   set: (timeMark: number) => {
-    localStorage.setItem(KEY, timeMark.toString());
+    localStorage.setItem(KEY, Math.round(timeMark).toString());
   },
 };

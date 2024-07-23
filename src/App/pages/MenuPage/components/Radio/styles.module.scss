@@ -4,8 +4,10 @@
   @include selectableList;
 
   .controls {
-    display: inline-flex;
-    align-items: inherit;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
     gap: 24px;
     font-size: 32px;
     -webkit-tap-highlight-color: transparent;
