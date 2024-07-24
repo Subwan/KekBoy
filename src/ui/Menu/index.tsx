@@ -33,27 +33,31 @@ function useStyle() {
 
   return createStyles(({ css }) => ({
     base: css`
+      --list-gap: calc((100vw - ${cssVars.varSidesMargin} * 2) * 20 / 100);
       justify-content: center;
       position: relative;
-      gap: 20%;
       margin: 0 ${cssVars.varSidesMargin};
       border: none;
       background: transparent;
       z-index: 3;
 
       &:before {
-        content: none;
+        content: '';
+        display: block;
+        flex-grow: 1;
+        height: calc(46px / 2);
+        border-bottom: 1px solid ${cssVars.colorMenu};
+        border-left: 1px solid ${cssVars.colorMenu};
+        z-index: 3; // чтобы быть выше анимаций
       }
 
       &:after {
         content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 50%;
+        order: 3;
+        display: block;
+        flex-grow: 1;
+        height: calc(46px / 2);
         border-bottom: 1px solid ${cssVars.colorMenu};
-        border-left: 1px solid ${cssVars.colorMenu};
         border-right: 1px solid ${cssVars.colorMenu};
         z-index: 3; // чтобы быть выше анимаций
       }
@@ -63,8 +67,30 @@ function useStyle() {
         box-sizing: border-box;
         border: 1px solid transparent; // Без этого прыгает элемент при выборе из-за относительного расположения
 
+        &:first-child {
+          &:after {
+            content: none !important;
+          }
+        }
+      }
+
+      .${prefix}-item + .${prefix}-item {
+        margin-left: var(--list-gap);
+
         &:after {
-          content: none !important;
+          content: '' !important;
+          position: absolute;
+          top: 50%;
+          bottom: unset !important;
+          left: unset !important;
+          right: 100% !important;
+          display: block;
+          width: var(--list-gap);
+          transform: translateY(-50%);
+          height: 1px;
+          background-color: ${cssVars.colorMenu};
+          border-width: 0 !important;
+          z-index: 3; // чтобы быть выше анимаций
         }
       }
 
