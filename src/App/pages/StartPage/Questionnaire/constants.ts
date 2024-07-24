@@ -1,6 +1,6 @@
-import { TQuestion } from './types';
+import { VAULT_NUMBER } from '../../../constants';
 
-export const VAULT_NUMBER = '272';
+import { TQuestion } from './types';
 
 export const START_TEXT = {
   HEADER: `Психологическое тестирование холостяка в убежище ${VAULT_NUMBER}`,

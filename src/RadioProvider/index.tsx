@@ -77,18 +77,21 @@ export const RadioProvider: React.FC<React.PropsWithChildren> = ({ children }) =
     RadioApi.set(audio.currentTime);
     play();
     updateActiveTrackPlayback();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const next = useCallback(() => {
     audio.currentTime = getNearPlayback(PlaybackType.NEXT);
     RadioApi.set(audio.currentTime);
     play();
     updateActiveTrackPlayback();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const setPlayback = useCallback((playback: number) => {
     audio.currentTime = playback;
     RadioApi.set(audio.currentTime);
     play();
     updateActiveTrackPlayback();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

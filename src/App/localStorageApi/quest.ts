@@ -34,6 +34,13 @@ const updateQuestsByCode = (code: QuestsCodes, currentData: TQuests): TQuests =>
     completed: true,
   };
 
+  if (code === QuestsCodes.LAST) {
+    data[QuestsCodes.FILTER] = {
+      ...data[QuestsCodes.FILTER],
+      completed: true,
+    };
+  }
+
   const nextCode = QUEST_ORDER[code];
 
   if (nextCode) {

@@ -8,9 +8,10 @@ export enum QuestsCodes {
   FILTER = 'НОВОЕ НАЧАЛО',
   VATS = 'ГОДЕН',
   STEEL = 'МАРКС',
+  SING = 'КИШ',
   NATION = 'ПИКУР',
-  SING = 'SING',
-  LAST = 'LAST',
+  LAST = 'НАТАЛИ',
+  ENDLESS = 'ENDLESS',
 }
 
 // От изменений типа зависит typeGuard isQuests

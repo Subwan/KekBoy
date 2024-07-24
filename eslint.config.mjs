@@ -3,6 +3,7 @@ import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
 import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
+import reactHooks from "eslint-plugin-react-hooks";
 import parser from "@typescript-eslint/parser";
 
 
@@ -28,7 +29,7 @@ export default [
     ignores: ["eslint.config.mjs", "craco.config.js", "src/setupProxy.js"],
   },
   {
-    plugins: { "simple-import-sort": simpleImportSort },
+    plugins: { "simple-import-sort": simpleImportSort, "react-hooks": reactHooks },
     settings: {
       react: {
         version: "detect"
@@ -77,6 +78,7 @@ export default [
         }
       ],
       "react/jsx-curly-brace-presence": ["error"],
+      "react-hooks/exhaustive-deps": 1,
       "react/jsx-sort-props": [
         "warn",
         {
