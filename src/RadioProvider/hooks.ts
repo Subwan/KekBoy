@@ -24,6 +24,7 @@ export const usePlayback = ({
 
   useEffect(() => {
     updateActiveTrackPlayback();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -40,6 +41,7 @@ export const usePlayback = ({
     return () => {
       clearInterval(interval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPlaying]);
 
   return { activeTrackPlayback, updateActiveTrackPlayback };
