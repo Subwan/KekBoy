@@ -46,7 +46,7 @@ export const CodeBlock: React.FC<Props> = ({ updateQuests }) => {
       <input
         className={styles.codeInput}
         value={inputValue}
-        maxLength={10}
+        maxLength={12}
         autoFocus
         onChange={(e) => setInputValue(e.target.value.toUpperCase())}
       />

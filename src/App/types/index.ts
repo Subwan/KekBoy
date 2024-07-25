@@ -8,7 +8,7 @@ export enum QuestsCodes {
   FILTER = 'НОВОЕ НАЧАЛО',
   VATS = 'ГОДЕН',
   STEEL = 'МАРКС',
-  SING = 'КИШ',
+  RADIOACTIVE = 'КОСОРЫЛОВКА',
   NATION = 'ПИКУР',
   LAST = 'НАТАЛИ',
   ENDLESS = 'ENDLESS',

@@ -33,7 +33,7 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "**/src/**/*.{js,jsx,!(d).ts,tsx,json}": [
+    "*.{js,jsx,!(d).ts,ts,tsx}": [
       "eslint src --max-warnings=0",
       "prettier src --write"
     ]
