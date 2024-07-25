@@ -26,12 +26,12 @@ export const INITIAL_QUESTS: TQuests = {
     description: `Ваш путь лежит в руины некогда могучей организации - Братства Сталина, которая ныне лишь тень 
       прошлого величия. Встретьтесь с их старейшиной Дроном в убежище 1917 и сделайте выбор - коммунизм или светлое будущее?`,
   },
-  [QuestsCodes.SING]: {
+  [QuestsCodes.RADIOACTIVE]: {
     active: false,
     completed: false,
-    title: 'Пой, революция!',
-    description: `Без определённых манипуляций голосовыми связками никакие дела не делаются. 
-      Придётся пойти в Las Palmas и своими вокальными данными призвать людей к действию.`,
+    title: 'Чужая земля',
+    description: `Перед тем, как пройти в самые дебри радиоактивной пустоши, нужно как следует
+      подготовиться. Неподалёку, в соседнем Гараже, есть залежи антирадина. Лучше принять его, пока ещё не поздно.`,
   },
   [QuestsCodes.NATION]: {
     active: false,
@@ -60,8 +60,8 @@ export const INITIAL_QUESTS: TQuests = {
 export const QUEST_ORDER: Record<QuestsCodes, QuestsCodes | undefined> = {
   [QuestsCodes.FILTER]: undefined,
   [QuestsCodes.VATS]: QuestsCodes.STEEL,
-  [QuestsCodes.STEEL]: QuestsCodes.SING,
-  [QuestsCodes.SING]: QuestsCodes.NATION,
+  [QuestsCodes.STEEL]: QuestsCodes.RADIOACTIVE,
+  [QuestsCodes.RADIOACTIVE]: QuestsCodes.NATION,
   [QuestsCodes.NATION]: QuestsCodes.LAST,
   [QuestsCodes.LAST]: QuestsCodes.ENDLESS,
   [QuestsCodes.ENDLESS]: undefined,
